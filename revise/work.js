@@ -30,16 +30,16 @@ window.onload = function () {
     let flag = 0;
     let square = 0;
     let timer = setInterval(autoPlay, 5000);
-    screen.onmouseover = function (ev) {
+    screen.onmouseover = function () {
         clearInterval(timer);
         div.style.display = "block";
     }
-    screen.onmouseout = function (ev) {
+    screen.onmouseout = function () {
         timer = setInterval(autoPlay, 5000);
         div.style.display = "none";
     }
     let divArr = div.children;
-    divArr[0].onclick = function (ev) {
+    divArr[0].onclick = function () {
         flag--;
         if(flag < 0) {
             ul.style.left = -(ul.children.length-1) * imgWidth + "px";
@@ -82,7 +82,7 @@ window.onload = function () {
                     ele.style.left = target + "px";
                     clearInterval(ele.timer);
                 }
-            },10)  
+            },5)  
     }
 
     function gethtmlfontsize(){
@@ -91,8 +91,11 @@ window.onload = function () {
         
         let htmlDom=document.getElementsByTagName("html")[0]
         console.log(htmlDom);
-        if(htmlwidth<=720){
-        htmlDom.style.fontSize=htmlwidth/20+'px';}
+        if(htmlwidth<=375){
+        htmlDom.style.fontSize=htmlwidth/20+'px';
+        let nav =document.getElementsByClassName('nav');
+        nav[0].style.width=htmlwidth
+    }
     }
     gethtmlfontsize();
 
